@@ -1,5 +1,7 @@
 use std::{io::{self, stdin, stdout, Read, Write}};
 
+mod euclidean_algorithm;
+
 fn pause() {
     let mut stdout = stdout();
     stdout.write(b"Press Enter to exit...").unwrap();
@@ -27,19 +29,11 @@ fn main() {
     let mut b: i32 = input_number_b.trim().parse().expect("Input not an integer");
 
     if a.is_negative() { a = a * -1 };
-    if b.is_negative() { b = b * -1; }
+    if b.is_negative() { b = b * -1 };
 
+    let result: i32 = euclidean_algorithm::algorithm(a, b);
 
-    println!("\nGCD({}, {}) = {}\n", a, b, algoritmo(a, b));
+    println!("\nGCD({}, {}) = {}\n", a, b, result);
 
     pause();
-}
-
-fn algoritmo(a: i32, b: i32) -> i32 {
-
-    if b==0 {
-        return a;
-    } else {
-        return algoritmo(b, a%b) ;
-    }
 }
