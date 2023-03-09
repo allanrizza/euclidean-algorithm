@@ -1,13 +1,7 @@
 use std::{io::{self, stdin, stdout, Read, Write}};
 
-mod euclidean_algorithm;
-
-fn pause() {
-    let mut stdout = stdout();
-    stdout.write(b"Press Enter to exit...").unwrap();
-    stdout.flush().unwrap();
-    stdin().read(&mut [0]).unwrap();
-}
+#[path = "euclidean_algorithm.rs"] mod euclidean_algorithm;
+#[path = "pause.rs"] mod pause;
 
 fn main() {
     println!("\nFIND THE GREATEST COMMON DIVISOR (GCD) WITH THE EUCLIDEAN ALGORITHM\n");
@@ -35,5 +29,5 @@ fn main() {
 
     println!("\nGCD({}, {}) = {}\n", a, b, result);
 
-    pause();
+    pause::pause();
 }
